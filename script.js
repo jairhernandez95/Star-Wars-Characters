@@ -129,7 +129,7 @@ function showAllData(array)
 {
     console.log(array);
     let charactersDataDiv = document.getElementById("charactersDataDiv");
-    for(let k = array.length; k = 0; k--)
+    for(let k = array.length-1; k >= 0; k--)
     {
         let name = `<h4>${array[k].name}</h4>`;
         let gender = `<h4>${array[k].gender}</h4>`;
