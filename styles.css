@@ -1,8 +1,50 @@
-body{
-    background-color: cornflowerblue;
+*
+{
+    font-family: 'Roboto Mono', monospace;
+    /* font-size: 15px; */
+}
+
+.titleDiv
+{
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.searchDiv
+{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.searchDiv > input
+{
+    height: 40px;
+    margin-right: 15px;
+}
+
+.searchDiv > button
+{
+    width: 100px;
 }
 
 .charactersDataDiv
 {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    justify-items: center;
+}
+
+.individualDataDiv
+{
     outline: 1px solid black;
+    margin-top: 15px;
+    width: 70%;
+}
+
+.individualDataDiv > div >h4
+{
+    padding: 5px;
+    margin: 0 ;
 }

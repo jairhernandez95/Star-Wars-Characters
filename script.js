@@ -101,9 +101,11 @@ async function getData()
 function searchDataArray(array)
 {
     let value = document.getElementById("searchBox").value;
+    let charactersDataDiv = document.getElementById("charactersDataDiv");
     if(value == "")
     {
-        console.log("Vacio el input")
+        console.log("Vacio el input");
+        charactersDataDiv.remove();
     }
     else
     {
@@ -131,12 +133,19 @@ function showAllData(array)
     let charactersDataDiv = document.getElementById("charactersDataDiv");
     for(let k = array.length-1; k >= 0; k--)
     {
-        let name = `<h4>${array[k].name}</h4>`;
-        let gender = `<h4>${array[k].gender}</h4>`;
-        let height = `<h4>${array[k].height}</h4>`;
-        charactersDataDiv.insertAdjacentHTML("afterend",height);
-        charactersDataDiv.insertAdjacentHTML("afterend",gender);
-        charactersDataDiv.insertAdjacentHTML("afterend",name);
+        let individualDataDiv = document.createElement("div");
+        individualDataDiv.setAttribute("id", "individualDataDiv");
+        individualDataDiv.setAttribute("class", "individualDataDiv");
+        let nameDiv = document.createElement("div")
+        let genderDiv = document.createElement("div");
+        let heightDiv = document.createElement("div");
+        nameDiv.innerHTML = `<h4>Name: ${array[k].name}</h4>`;
+        genderDiv.innerHTML = `<h4>Gender: ${array[k].gender}</h4>`;
+        heightDiv.innerHTML = `<h4>Height: ${array[k].height}</h4>`;
+        charactersDataDiv.insertAdjacentElement("afterbegin",individualDataDiv);
+        individualDataDiv.insertAdjacentElement("afterbegin", heightDiv);
+        individualDataDiv.insertAdjacentElement("afterbegin", genderDiv);
+        individualDataDiv.insertAdjacentElement("afterbegin", nameDiv);
     }
 }
 let position = null;
