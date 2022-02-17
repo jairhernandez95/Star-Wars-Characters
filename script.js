@@ -90,7 +90,7 @@ async function getData()
             const response = await fetch(`${base}${people}${i}`);
             const json = await response.json();
             data.push(json);
-            tree.insert(data[data.length-1]);
+            // tree.insert(data[data.length-1]);
         }
     }
     console.log("Datos cargados ✅");
@@ -101,25 +101,32 @@ async function getData()
 function searchDataArray(array)
 {
     let value = document.getElementById("searchBox").value;
-    let charactersDataDiv = document.getElementById("charactersDataDiv");
+    let auxiliarArray = []
+    // console.log(auxiliarArray);
     if(value == "")
     {
         console.log("Vacio el input");
-        charactersDataDiv.remove();
+        // charactersDataDiv.remove();
     }
     else
     {
         for(let j = 0; j < array.length; j++)
         {
-            if(array[j].name.includes(value))
+            // for(let l = 0; l < auxiliarArray.length; l++)
+            // {
+            //     if([...array[j].name][j] == auxiliarArray[l])
+            //     {
+            //         console.log(`${[...array[j].name][j]} es igual a ${auxiliarArray[l]}`)
+            //     }
+            // }
+            // console.log([...array[j].name])
+            if(array[j].name.includes(value) == true)
             {
-                console.log(`${value} SI se encuentra en la api y su posición es ${j}`);
-                position = j;
-                console.log(array[j]);
-                break;
+                auxiliarArray.push(array[j]);
             }
         }
-        document.getElementById("searchBox").value =  "";
+        console.log(auxiliarArray);
+        // document.getElementById("searchBox").value =  "";
     }
 }
 function searchDataBinaryTree()
@@ -148,8 +155,14 @@ function showAllData(array)
         individualDataDiv.insertAdjacentElement("afterbegin", nameDiv);
     }
 }
-let position = null;
+
+function showInputData() //para hacer pruebas de ingresar datos por el input
+{
+    let value = document.getElementById("searchBox").value;
+    console.log(value);
+}
 let data = [];
-let tree = new BinaryTree();
+
+// let tree = new BinaryTree();
 getData();
 
