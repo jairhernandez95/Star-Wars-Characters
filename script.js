@@ -29,7 +29,8 @@ function showAllData(array)
         let individualDataDiv = document.createElement("div");
         individualDataDiv.setAttribute("id", "individualDataDiv");
         individualDataDiv.setAttribute("class", "individualDataDiv");
-        individualDataDiv.setAttribute("onmousedown", "showModal()")
+        individualDataDiv.setAttribute("id", `${k}`);
+        individualDataDiv.setAttribute("onmousedown", "showModal(data)");
         let nameDiv = document.createElement("div")
         let genderDiv = document.createElement("div");
         let heightDiv = document.createElement("div");
@@ -94,6 +95,7 @@ function showFoundData(array)
             let individualDataDiv = document.createElement("div");
             individualDataDiv.setAttribute("id", "individualDataDiv");
             individualDataDiv.setAttribute("class", "individualDataDiv");
+            individualDataDiv.setAttribute("onmousedown", "showModal(data)");
             let nameDiv = document.createElement("div")
             let genderDiv = document.createElement("div");
             let heightDiv = document.createElement("div");
@@ -107,14 +109,17 @@ function showFoundData(array)
         }
     }
 }
-function showModal()
+function showModal(array)
 {
-    console.log("Hello");
-    Swal.fire({
-        title: 'More info about ____',
-        text: 'Attribute 4:___, Attribute 5: ____'
-      })
+    let individualDataDiv = document.getElementsByClassName("individualDataDiv")[1].id;
+    console.log(individualDataDiv);
+    // Swal.fire({
+    //     title: `More info about ${array[0].name}`,
+    //     text: `Gender: ${array[0].gender}, 
+    //     Height:${array[0].height}`
+    //     })
 }
+
 let data = [];
 getData();
 
