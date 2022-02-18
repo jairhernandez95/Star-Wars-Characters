@@ -29,6 +29,7 @@ function showAllData(array)
         let individualDataDiv = document.createElement("div");
         individualDataDiv.setAttribute("id", "individualDataDiv");
         individualDataDiv.setAttribute("class", "individualDataDiv");
+        individualDataDiv.setAttribute("onmousedown", "showModal()")
         let nameDiv = document.createElement("div")
         let genderDiv = document.createElement("div");
         let heightDiv = document.createElement("div");
@@ -70,26 +71,49 @@ function searchDataArray(array)
 }
 function showFoundData(array)
 {
-    let charactersDataDiv = document.getElementById("charactersDataDiv");
-    charactersDataDiv.style.display = "none";
-    let resultDiv = document.getElementById("resultDiv");
-    resultDiv.style.display = "grid";
-    for(let k = array.length-1; k >= 0; k--)
+    if(array.length == 0)
     {
-        let individualDataDiv = document.createElement("div");
-        individualDataDiv.setAttribute("id", "individualDataDiv");
-        individualDataDiv.setAttribute("class", "individualDataDiv");
-        let nameDiv = document.createElement("div")
-        let genderDiv = document.createElement("div");
-        let heightDiv = document.createElement("div");
-        nameDiv.innerHTML = `<h4>Name: ${array[k].name}</h4>`;
-        genderDiv.innerHTML = `<h4>Gender: ${array[k].gender}</h4>`;
-        heightDiv.innerHTML = `<h4>Height: ${array[k].height}</h4>`;
-        resultDiv.insertAdjacentElement("afterbegin",individualDataDiv);
-        individualDataDiv.insertAdjacentElement("afterbegin", heightDiv);
-        individualDataDiv.insertAdjacentElement("afterbegin", genderDiv);
-        individualDataDiv.insertAdjacentElement("afterbegin", nameDiv);
+        console.log("No hay datos similares al input");
+        let charactersDataDiv = document.getElementById("charactersDataDiv");
+        charactersDataDiv.style.display = "none";
+        let resultDiv = document.getElementById("resultDiv");
+        resultDiv.style.display = "block";
+        let alertDiv = document.createElement("div");
+        alertDiv.setAttribute("class", "alertDiv");
+        alertDiv.innerHTML = `<h4>Theres no characters with that name</h4>`;
+        resultDiv.insertAdjacentElement("afterbegin",alertDiv)
     }
+    else
+    {
+        let charactersDataDiv = document.getElementById("charactersDataDiv");
+        charactersDataDiv.style.display = "none";
+        let resultDiv = document.getElementById("resultDiv");
+        resultDiv.style.display = "grid";
+        for(let k = array.length-1; k >= 0; k--)
+        {
+            let individualDataDiv = document.createElement("div");
+            individualDataDiv.setAttribute("id", "individualDataDiv");
+            individualDataDiv.setAttribute("class", "individualDataDiv");
+            let nameDiv = document.createElement("div")
+            let genderDiv = document.createElement("div");
+            let heightDiv = document.createElement("div");
+            nameDiv.innerHTML = `<h4>Name: ${array[k].name}</h4>`;
+            genderDiv.innerHTML = `<h4>Gender: ${array[k].gender}</h4>`;
+            heightDiv.innerHTML = `<h4>Height: ${array[k].height}</h4>`;
+            resultDiv.insertAdjacentElement("afterbegin",individualDataDiv);
+            individualDataDiv.insertAdjacentElement("afterbegin", heightDiv);
+            individualDataDiv.insertAdjacentElement("afterbegin", genderDiv);
+            individualDataDiv.insertAdjacentElement("afterbegin", nameDiv);
+        }
+    }
+}
+function showModal()
+{
+    console.log("Hello");
+    Swal.fire({
+        title: 'More info about ____',
+        text: 'Attribute 4:___, Attribute 5: ____'
+      })
 }
 let data = [];
 getData();
