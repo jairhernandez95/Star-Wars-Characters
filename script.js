@@ -40,6 +40,7 @@ function showAllData(array)
         individualDataDiv.setAttribute("id", `${k}`);
         // individualDataDiv.setAttribute("onmousedown", "showModal(data)");
         let imageDiv = document.createElement("div");
+        imageDiv.setAttribute("class", "imageDiv");
         let nameDiv = document.createElement("div")
         let genderDiv = document.createElement("div");
         let heightDiv = document.createElement("div");
@@ -107,6 +108,7 @@ function showFoundData(array)
             individualDataDiv.setAttribute("class", "individualDataDiv");
             // individualDataDiv.setAttribute("onmousedown", "showModal(data)");
             let imageDiv = document.createElement("div");
+            imageDiv.setAttribute("class", "imageDiv");
             let nameDiv = document.createElement("div")
             let genderDiv = document.createElement("div");
             let heightDiv = document.createElement("div");

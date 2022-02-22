@@ -3,7 +3,6 @@
     font-family: 'Roboto Mono', monospace;
     /* font-size: 15px; */
 }
-
 .titleDiv
 {
     display: flex;
@@ -11,63 +10,61 @@
     font-size: 20px;
     
 }
-
 .searchDiv
 {
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
 }
-
 .searchDiv > input
 {
     height: 40px;
     margin-right: 15px;
 }
-
 .charactersDataDiv
 {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
     justify-items: center;
 }
-
 .individualDataDiv
 {
     outline: 1px solid black;
     margin-top: 15px;
     width: 70%;
     cursor: pointer;
+    border-radius: 5px;
+    height:fit-content;
 }
-
 .individualDataDiv:hover
 {
     background-color: yellow;
     transition: 0.5s;
     box-shadow: 5px 5px 5px black;
 }
-
+.imageDiv
+{
+    height: 50%;
+}
 .individualDataDiv > div >h4
 {
     padding: 5px;
     margin: 0 ;
 }
-
 .resultDiv
 {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
     justify-items: center;
 }
-
 .alertDiv
 {
     display: flex;
     justify-content: center;
     font-size: 20px;
 }
-
 img
 {
     width: 100%;
+    height: 100%;
 }
