@@ -1,26 +1,34 @@
-async function getData()
-{
-    let base = 'https://swapi.dev/api/';
-    let people = 'people/';
-    console.log("Cargando datos ⌛️⏳⌛️");
-    for(let i = 1; i < 84;i++)
-    {
-        if(i == 17)
-        {
-            continue;
-        }
-        else
-        {
-            const response = await fetch(`${base}${people}${i}`);
-            const json = await response.json();
-            data.push(json);
-        }
-    }
-    console.log("Datos cargados ✅");
-    showAllData(data);
-}
+// async function getData()
+// {
+//     let base = 'https://swapi.dev/api/';
+//     let people = 'people/';
+//     console.log("Cargando datos ⌛️⏳⌛️");
+//     for(let i = 1; i < 84;i++)
+//     {
+//         if(i == 17)
+//         {
+//             continue;
+//         }
+//         else
+//         {
+//             const response = await fetch(`${base}${people}${i}`);
+//             const json = await response.json();
+//             data.push(json);
+//         }
+//     }
+//     console.log("Datos cargados ✅");
+//     showAllData(data);
+// }
+
+fetch("allData.json")
+    .then(Response => Response.json())
+    .then(dataFile => {
+        showAllData(dataFile);
+    });
+// Liga para obtener datos de allData.json https://github.com/akabab/starwars-api/blob/master/api/all.json
 function showAllData(array)
 {
+    data = array;
     let resultDiv = document.getElementById("resultDiv");
     resultDiv.style.display = "none";
     let charactersDataDiv = document.getElementById("charactersDataDiv");
@@ -30,10 +38,12 @@ function showAllData(array)
         individualDataDiv.setAttribute("id", "individualDataDiv");
         individualDataDiv.setAttribute("class", "individualDataDiv");
         individualDataDiv.setAttribute("id", `${k}`);
-        individualDataDiv.setAttribute("onmousedown", "showModal(data)");
+        // individualDataDiv.setAttribute("onmousedown", "showModal(data)");
+        let imageDiv = document.createElement("div");
         let nameDiv = document.createElement("div")
         let genderDiv = document.createElement("div");
         let heightDiv = document.createElement("div");
+        imageDiv.innerHTML = `<image src="${array[k].image}">`
         nameDiv.innerHTML = `<h4>Name: ${array[k].name}</h4>`;
         genderDiv.innerHTML = `<h4>Gender: ${array[k].gender}</h4>`;
         heightDiv.innerHTML = `<h4>Height: ${array[k].height}</h4>`;
@@ -41,6 +51,7 @@ function showAllData(array)
         individualDataDiv.insertAdjacentElement("afterbegin", heightDiv);
         individualDataDiv.insertAdjacentElement("afterbegin", genderDiv);
         individualDataDiv.insertAdjacentElement("afterbegin", nameDiv);
+        individualDataDiv.insertAdjacentElement("afterbegin", imageDiv);
     }
 }
 function searchDataArray(array)
@@ -53,9 +64,8 @@ function searchDataArray(array)
     let auxiliarArray = []
     if(value == "")
     {
-        console.log("No hay valores por buscar");
+        // console.log("No hay valores por buscar");
         charactersDataDiv.style.display = "grid";
-        
     }
     else
     {
@@ -74,7 +84,7 @@ function showFoundData(array)
 {
     if(array.length == 0)
     {
-        console.log("No hay datos similares al input");
+        // console.log("No hay datos similares al input");
         let charactersDataDiv = document.getElementById("charactersDataDiv");
         charactersDataDiv.style.display = "none";
         let resultDiv = document.getElementById("resultDiv");
@@ -95,10 +105,12 @@ function showFoundData(array)
             let individualDataDiv = document.createElement("div");
             individualDataDiv.setAttribute("id", "individualDataDiv");
             individualDataDiv.setAttribute("class", "individualDataDiv");
-            individualDataDiv.setAttribute("onmousedown", "showModal(data)");
+            // individualDataDiv.setAttribute("onmousedown", "showModal(data)");
+            let imageDiv = document.createElement("div");
             let nameDiv = document.createElement("div")
             let genderDiv = document.createElement("div");
             let heightDiv = document.createElement("div");
+            imageDiv.innerHTML = `<image src="${array[k].image}">`
             nameDiv.innerHTML = `<h4>Name: ${array[k].name}</h4>`;
             genderDiv.innerHTML = `<h4>Gender: ${array[k].gender}</h4>`;
             heightDiv.innerHTML = `<h4>Height: ${array[k].height}</h4>`;
@@ -106,6 +118,7 @@ function showFoundData(array)
             individualDataDiv.insertAdjacentElement("afterbegin", heightDiv);
             individualDataDiv.insertAdjacentElement("afterbegin", genderDiv);
             individualDataDiv.insertAdjacentElement("afterbegin", nameDiv);
+            individualDataDiv.insertAdjacentElement("afterbegin", imageDiv);
         }
     }
 }
@@ -121,5 +134,5 @@ function showModal(array)
 }
 
 let data = [];
-getData();
+// getData();
 
